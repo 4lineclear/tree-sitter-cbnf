@@ -173,11 +173,11 @@
     "named": false
   },
   {
-    "type": "or",
+    "type": "{",
     "named": false
   },
   {
-    "type": "{",
+    "type": "|",
     "named": false
   },
   {

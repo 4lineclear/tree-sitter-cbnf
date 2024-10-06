@@ -38,7 +38,7 @@
               "name": "name",
               "content": {
                 "type": "SYMBOL",
-                "name": "_syntax_name"
+                "name": "_rule_name"
               }
             },
             {
@@ -74,7 +74,7 @@
         }
       ]
     },
-    "_syntax_name": {
+    "_rule_name": {
       "type": "CHOICE",
       "members": [
         {
@@ -114,7 +114,7 @@
             "members": [
               {
                 "type": "STRING",
-                "value": "or"
+                "value": "|"
               },
               {
                 "type": "SYMBOL",

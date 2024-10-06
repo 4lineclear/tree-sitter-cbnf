@@ -13,16 +13,16 @@ module.exports = grammar({
     syntax_rule: ($) =>
       choice(
         seq(
-          field("name", $._syntax_name),
+          field("name", $._rule_name),
           "{",
           field("definition", $._expression),
           "}",
         ),
         seq($.meta, ";"),
       ),
-    _syntax_name: ($) => choice($.identifier, $.meta),
+    _rule_name: ($) => choice($.identifier, $.meta),
     _expression: ($) => choice($.list, $.or),
-    or: ($) => seq($.list, repeat1(seq("or", $.list))),
+    or: ($) => seq($.list, repeat1(seq("|", $.list))),
     list: ($) => repeat1($._term),
     _term: ($) => choice($._atom, $._group),
     _atom: ($) => choice($.identifier, $.meta, $.string, $.keyword),

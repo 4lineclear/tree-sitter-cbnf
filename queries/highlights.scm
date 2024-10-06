@@ -1,22 +1,21 @@
-(terminal) @string.grammar
+(string) @string
 
-(integer) @number
+(escape_sequence) @string.escape
 
 (comment) @comment
 
 (identifier) @variable
 
-(builtin 
-  (identifier) @constant.builtin) @constant.builtin
+(meta) @constant.builtin
 
 (syntax_rule
-  name: (identifier) @variable)
-
-"=>>" @keyword.operator
-"<<=" @keyword.operator
+  name: (identifier) @type.definition)
 
 "(" @punctuation.bracket
 ")" @punctuation.bracket
+"{" @punctuation.bracket
+"}" @punctuation.bracket
 
+(or) @punctuation.delimiter
 "nil" @keyword
 "except" @keyword
