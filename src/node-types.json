@@ -25,10 +25,6 @@
           "named": true
         },
         {
-          "type": "meta",
-          "named": true
-        },
-        {
           "type": "or",
           "named": true
         },
@@ -90,7 +86,7 @@
     "fields": {
       "definition": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "list",
@@ -104,28 +100,14 @@
       },
       "name": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "identifier",
             "named": true
-          },
-          {
-            "type": "meta",
-            "named": true
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "meta",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -145,10 +127,6 @@
     "named": false
   },
   {
-    "type": ";",
-    "named": false
-  },
-  {
     "type": "comment",
     "named": true
   },
@@ -162,10 +140,6 @@
   },
   {
     "type": "identifier",
-    "named": true
-  },
-  {
-    "type": "meta",
     "named": true
   },
   {

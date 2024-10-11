@@ -9,23 +9,18 @@ module.exports = grammar({
     syntax: ($) => repeat($.syntax_rule),
     comment: ($) => token(prec(-1, /#.*/)),
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
-    meta: ($) => /\$[a-zA-Z_][a-zA-Z0-9_]*/,
     syntax_rule: ($) =>
-      choice(
-        seq(
-          field("name", $._rule_name),
-          "{",
-          field("definition", $._expression),
-          "}",
-        ),
-        seq($.meta, ";"),
+      seq(
+        field("name", $.identifier),
+        "{",
+        field("definition", $._expression),
+        "}",
       ),
-    _rule_name: ($) => choice($.identifier, $.meta),
     _expression: ($) => choice($.list, $.or),
     or: ($) => seq($.list, repeat1(seq("|", $.list))),
     list: ($) => repeat1($._term),
     _term: ($) => choice($._atom, $._group),
-    _atom: ($) => choice($.identifier, $.meta, $.string, $.keyword),
+    _atom: ($) => choice($.identifier, $.string, $.keyword),
     _group: ($) => seq("(", optional($._expression), ")"),
     string: ($) =>
       choice(
@@ -36,7 +31,7 @@ module.exports = grammar({
         ),
         seq(
           "'",
-          choice($.escape_sequence, token.immediate(/./)),
+          repeat(choice($.escape_sequence, token.immediate(/./))),
           token.immediate("'"),
         ),
       ),

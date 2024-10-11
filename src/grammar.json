@@ -23,67 +23,32 @@
       "type": "PATTERN",
       "value": "[a-zA-Z_][a-zA-Z0-9_]*"
     },
-    "meta": {
-      "type": "PATTERN",
-      "value": "\\$[a-zA-Z_][a-zA-Z0-9_]*"
-    },
     "syntax_rule": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "name",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_rule_name"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "{"
-            },
-            {
-              "type": "FIELD",
-              "name": "definition",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_expression"
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "}"
-            }
-          ]
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "meta"
-            },
-            {
-              "type": "STRING",
-              "value": ";"
-            }
-          ]
-        }
-      ]
-    },
-    "_rule_name": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "STRING",
+          "value": "{"
         },
         {
-          "type": "SYMBOL",
-          "name": "meta"
+          "type": "FIELD",
+          "name": "definition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
         }
       ]
     },
@@ -151,10 +116,6 @@
         {
           "type": "SYMBOL",
           "name": "identifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "meta"
         },
         {
           "type": "SYMBOL",
@@ -237,20 +198,23 @@
               "value": "'"
             },
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "escape_sequence"
-                },
-                {
-                  "type": "IMMEDIATE_TOKEN",
-                  "content": {
-                    "type": "PATTERN",
-                    "value": "."
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "escape_sequence"
+                  },
+                  {
+                    "type": "IMMEDIATE_TOKEN",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "."
+                    }
                   }
-                }
-              ]
+                ]
+              }
             },
             {
               "type": "IMMEDIATE_TOKEN",
