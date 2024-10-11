@@ -1,13 +1,14 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+// NOTE: see tree-sitter-rust to improve on the grammarj
+//
 module.exports = grammar({
   name: "cbnf",
 
-  extras: ($) => [/ |\n|\t|\r/, $.comment],
+  extras: ($) => [/\s/, $.line_comment],
   rules: {
     syntax: ($) => repeat($.syntax_rule),
-    comment: ($) => token(prec(-1, /#.*/)),
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
     syntax_rule: ($) =>
       seq(
@@ -48,5 +49,6 @@ module.exports = grammar({
         ),
       ),
     keyword: ($) => choice("nil", "except"),
+    line_comment: ($) => seq("//", token.immediate(prec(1, /.*/))),
   },
 });

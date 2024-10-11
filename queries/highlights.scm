@@ -2,14 +2,12 @@
 
 (escape_sequence) @string.escape
 
-(comment) @comment
-
 (identifier) @variable
 
-(meta) @constant.builtin
-
 (syntax_rule
-  name: (identifier) @type.definition)
+  name: (identifier) @property)
+
+(line_comment) @comment
 
 "(" @punctuation.bracket
 ")" @punctuation.bracket
