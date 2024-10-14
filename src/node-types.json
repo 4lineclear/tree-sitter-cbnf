@@ -85,6 +85,21 @@
     "fields": {}
   },
   {
+    "type": "char_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "inner_doc_comment_marker",
     "named": true,
     "fields": {}
@@ -261,6 +276,10 @@
     "named": false
   },
   {
+    "type": "'",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -289,8 +308,8 @@
     "named": false
   },
   {
-    "type": "char_literal",
-    "named": true
+    "type": "b",
+    "named": false
   },
   {
     "type": "doc_comment",

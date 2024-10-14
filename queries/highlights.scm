@@ -1,10 +1,10 @@
-(char_literal) @string
+(char_literal) @character
 (string_literal) @string
 (raw_string_literal) @string
 
-(boolean_literal) @constant.builtin
-(integer_literal) @constant.builtin
-(float_literal) @constant.builtin
+(boolean_literal) @boolean
+(integer_literal) @number
+(float_literal) @number.float
 
 (escape_sequence) @string.escape
 

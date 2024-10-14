@@ -64,27 +64,12 @@ module.exports = grammar({
         $._raw_string_literal_end,
       ),
 
-    char_literal: (_) =>
-      token(
-        seq(
-          optional("b"),
-          "'",
-          optional(
-            choice(
-              seq(
-                "\\",
-                choice(
-                  /[^xu]/,
-                  /u[0-9a-fA-F]{4}/,
-                  /u\{[0-9a-fA-F]+\}/,
-                  /x[0-9a-fA-F]{2}/,
-                ),
-              ),
-              /[^\\']/,
-            ),
-          ),
-          "'",
-        ),
+    char_literal: ($) =>
+      seq(
+        optional("b"),
+        "'",
+        optional(choice($.escape_sequence, /[^\\']/)),
+        "'",
       ),
 
     escape_sequence: (_) =>
